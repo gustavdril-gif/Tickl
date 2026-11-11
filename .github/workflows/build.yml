@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -o project.zip
+      - run: |
+          f=$(find . -maxdepth 2 -name '*.zip' | head -1)
+          echo "Memakai zip: $f"
+          unzip -o "$f"
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
